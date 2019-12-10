@@ -8,10 +8,10 @@ public class Point implements Observable {
     private int x;
     private int y;
 
-    public synchronized void move(int dx, int dy) {
-        x += dx;
-        y += dy;
-        notifyObservers();
+    public static synchronized void move(Point point, int dx, int dy) {
+        point.x += dx;
+        point.y += dy;
+//        notifyObservers();
     }
 
     public int getX() {
