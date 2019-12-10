@@ -14,7 +14,7 @@ public class SynchronizedMovingPoint {
         myPoint.addObserver(new PointConsoleObserver());
         List<Future<?>> futureList = new ArrayList<>();
         for (int i = 0; i < 2000; i++) {
-            futureList.add(service.submit(() -> myPoint.move(myPoint, 1, 1)));
+            futureList.add(service.submit(() -> myPoint.move(1, 1)));
         }
 
         futureList.forEach(future -> {
