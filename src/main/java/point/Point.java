@@ -5,12 +5,15 @@ import java.util.List;
 
 public class Point implements Observable {
     private List<IPointObserver> observers = new ArrayList<>();
+    private static final Object lock = new Object();
     private int x;
     private int y;
 
-    public static synchronized void move(Point point, int dx, int dy) {
-        point.x += dx;
-        point.y += dy;
+    public static void move(Point point, int dx, int dy) {
+        synchronized (lock) {
+            point.x += dx;
+            point.y += dy;
+        }
 //        notifyObservers();
     }
 
